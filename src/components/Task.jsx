@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 export default class Task extends React.Component {
   constructor(props) {
@@ -55,9 +55,10 @@ export default class Task extends React.Component {
   }
 }
 
-export const TaskFunc = ({ children, removeTask, index }) => {
+export const TaskFunc = ({ children, removeTask, updateTask, index }) => {
   // hooks
   const [isEditState, setisEditState] = useState({ isEdit: false });
+  const newTxt = useRef();
 
   const handleClickEdit = () => {
     setisEditState({ isEdit: true });
@@ -67,22 +68,25 @@ export const TaskFunc = ({ children, removeTask, index }) => {
     removeTask(index);
   };
   const handleClickSave = () => {
-    // To Do -> Tomorrow
-    const value = this.newTxt.current.value;
-    this.props.updateTask(this.props.index, value);
-    this.setState({ isEdit: false });
+    const value = newTxt.current.value;
+    updateTask(index, value);
+    setisEditState({ isEdit: false });
   };
   // boolean(true false) ? return 1 : return 2
-  isEditState.isEdit ? (
-    <div className="box">
-      <div>{children}</div>
-      <button onClick={handleClickEdit}>Edit</button>
-      <button onClick={handleClickRemove}>Remove</button>
-    </div>
-  ) : (
-    <div className="box">
-      <textarea ref={this.newTxt} defaultValue={children}></textarea>
-      <button onClick={handleClickSave}>Save</button>
-    </div>
-  );
+  if (!isEditState.isEdit) {
+    return (
+      <div className="box">
+        <div>{children}</div>
+        <button onClick={handleClickEdit}>Edit</button>
+        <button onClick={handleClickRemove}>Remove</button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="box">
+        <textarea ref={newTxt} defaultValue={children}></textarea>
+        <button onClick={handleClickSave}>Save</button>
+      </div>
+    );
+  }
 };

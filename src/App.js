@@ -1,10 +1,10 @@
 import './App.css';
-import { TaskList } from './components/TasksList';
+import { TaskListFunc } from './components/TasksList';
 
 function App() {
   return (
     <div>
-      <TaskList/>
+      <TaskListFunc />
     </div>
   );
 }

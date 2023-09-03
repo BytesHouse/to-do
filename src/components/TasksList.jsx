@@ -1,5 +1,5 @@
-import React from "react";
-import Task from "./Task";
+import React, { useState } from "react";
+import Task, { TaskFunc } from "./Task";
 
 export class TaskList extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export class TaskList extends React.Component {
   }
 
   addTask = () => {
+    console.log("click");
     const newTasks = [...this.state.tasks];
     newTasks.push("New Task");
     this.setState({ tasks: newTasks });
@@ -35,16 +36,59 @@ export class TaskList extends React.Component {
         </button>
         {this.state.tasks.map((item, index) => {
           return (
-            <Task
+            <TaskFunc
+              key={item + " " + index}
               index={index}
               removeTask={this.taskRemove}
               updateTask={this.taskEdit}
             >
               {item}
-            </Task>
+            </TaskFunc>
           );
         })}
       </div>
     );
   }
 }
+
+export const TaskListFunc = ({}) => {
+  // Hooks useState
+  const [tasks, setTasks] = useState([]);
+  console.log(tasks);
+  // Functions CRUD
+  const addTask = () => {
+    const newTasks = [...tasks];
+    newTasks.push("New Task");
+    setTasks(newTasks);
+  };
+  const taskEdit = (index, text) => {
+    const newTasks = [...tasks];
+    newTasks[index] = text;
+    setTasks(newTasks);
+  };
+
+  const taskRemove = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+  return (
+    <div className="field">
+      <button onClick={addTask} className="btn new">
+        Add new Task
+      </button>
+      {tasks.map((item, index) => {
+        return (
+          <TaskFunc
+            key={item + " " + index}
+            index={index}
+            removeTask={taskRemove}
+            updateTask={taskEdit}
+          >
+            {item}
+          </TaskFunc>
+        );
+      })}
+    </div>
+  );
+};
