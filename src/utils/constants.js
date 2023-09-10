@@ -1,6 +1,6 @@
 export const items = [
-  { text: "Home" },
-  { text: "About me" },
-  { text: "Star Wars" },
-  { text: "Contact" },
+  { text: "Home", id: 1 },
+  { text: "About me", id: 2 },
+  { text: "Star Wars", id: 3 },
+  { text: "Contact", id: 4 },
 ];
