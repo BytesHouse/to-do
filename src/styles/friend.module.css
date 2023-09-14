@@ -1,0 +1,12 @@
+.image {
+    width: 200px;
+    height: 130px;
+}
+.section {
+    float: right; 
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 150px);
+}

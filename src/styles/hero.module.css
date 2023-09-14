@@ -1,3 +1,8 @@
 .hero {
     box-shadow: rgba(60,69,67, 0.3) 8px 8px;
 }
+.section {
+    float: left;
+    width: 25%;
+    display: flex;
+}
