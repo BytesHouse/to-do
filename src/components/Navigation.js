@@ -1,4 +1,5 @@
 import { items } from "../utils/constants";
+import {Link} from "react-router-dom"
 
 export const Navigation = ({ changePage }) => {
   return (
@@ -6,10 +7,9 @@ export const Navigation = ({ changePage }) => {
       <ul className="nav">
         {items.map(({ text, id }) => (
           <li
-            onClick={() => changePage(id)}
             className="btn-danger nav-item btn mx-1 border border-white"
           >
-            {text}
+            <Link to={id}>{text}</Link>
           </li>
         ))}
       </ul>

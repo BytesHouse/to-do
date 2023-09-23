@@ -9,10 +9,10 @@ import friend8 from "../img/friend8.jpg";
 import friend9 from "../img/friend9.jpg";
 
 export const items = [
-  { text: "Home", id: 1 },
-  { text: "About me", id: 2 },
-  { text: "Star Wars", id: 3 },
-  { text: "Contact", id: 4 },
+  { text: "Home", id: "/" },
+  { text: "About me", id: "/about" },
+  { text: "Star Wars", id: "/starwars" },
+  { text: "Contact", id: "/contacts" },
 ];
 
 export const textFarGalaxy = `It is a period of civil war.
