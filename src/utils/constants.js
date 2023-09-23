@@ -49,3 +49,5 @@ const friends = [
   friend9,
 ];
 export default friends;
+
+export const baseURL = "https://650e9f9354d18aabfe995018.mockapi.io/api/v1";
