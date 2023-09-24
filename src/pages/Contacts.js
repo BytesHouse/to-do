@@ -5,7 +5,7 @@ import { PostService } from "../api/posts.service";
 import { UsersTable } from "../components/UsersTable";
 
 export default function Contacts() {
-    const [state, setState] = useState();
+    const [state, setState] = useState([]);
     const [posts, setPosts] = useState();
     useEffect(() => {
         UserService.getUsers().then((json) => setState(json.data));
